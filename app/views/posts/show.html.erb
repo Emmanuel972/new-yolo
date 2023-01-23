@@ -1,0 +1,31 @@
+<div class="container">
+  <%= link_to "Accueil", posts_path %>
+  <div class="text-center">
+    <h1><%= @post.title %></h1>
+  </div>
+  <div class="text-center">
+    <p><%= @post.content %></p>
+  </div>
+  <div class="text-end">
+    <span>Edité par <%= @post.user.username %> le <%= @post.created_at.strftime("%d/%m/%y") %> </span>
+  </div>
+  <div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h2 class="text-center">Commentaires</h2>
+        <% @reviews.each do |review| %>
+          <div>
+            <span class="text-end"><%= review.rating %></span>
+            <p><%= review.content %></p>
+            <span class="text-end">Fait le <%= review..created_at.strftime("%d/%m/%y") %></span>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-center">Laisser un commentaire</h2>
+        <%= render "shared/review_form", post: @post, review: @review %>
+      </div>
+    </div>
+  </div>
+</div>
