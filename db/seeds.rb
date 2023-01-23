@@ -26,7 +26,7 @@ puts "Creating posts ..."
   post = Post.new(
     {
       title: Faker::Games::LeagueOfLegends.champion,
-      content: "#{Faker::Games::LeagueOfLegends.rank} use #{Faker::Games::LeagueOfLegends.spell} and say #{Faker::Games::LeagueOfLegends.quote}"
+      content: "#{Faker::Games::LeagueOfLegends.rank} use #{Faker::Games::LeagueOfLegends.summoner_spell} and say #{Faker::Games::LeagueOfLegends.quote}"
     }
   )
   post.user = User.find(1)

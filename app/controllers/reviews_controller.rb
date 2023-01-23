@@ -1,30 +1,20 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:edite, :update, :destroy]
+  before_action :set_review, only: [:destroy]
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    if @post.save
-      redirect_to @post
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.post = Post.find(params[:post_id])
+    if @review.save
+      redirect_to @review
     else
       render :new
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @post.update(post_params)
-      redirect_to @post
-    else
-      render :edit
-    end
-  end
-
   def destroy
-    @post.destroy
-    redirect_to posts_path
+    @review.destroy
+    redirect_to reviews_path
   end
 
   private
